@@ -1,0 +1,42 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+  color: #333; }
+
+.forceLayoutBox {
+  height: 80%;
+  width: 100%; }
+  .forceLayoutBox circle {
+    stroke: #fff;
+    stroke-width: 1.5px; }
+  .forceLayoutBox line {
+    stroke: #999;
+    stroke-opacity: 0.6; }
+
+.sliderBox {
+  height: 20%;
+  width: 100%; }
+  .sliderBox .sliderButton {
+    cursor: pointer; }
+  .sliderBox .label {
+    width: 80px;
+    text-align: center;
+    border: 1px solid #bbb;
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 90%;
+    font-weight: bold; }
+  .sliderBox .linkLabel .label {
+    margin-left: -80px; }
+  .sliderBox .nodeLabel .label::before {
+    content: "Nodes: ";
+    font-size: 90%;
+    font-weight: normal; }
+  .sliderBox .linkLabel .label::before {
+    content: "Links: ";
+    font-size: 90%;
+    font-weight: normal; }
+
+/*# sourceMappingURL=main.css.map */
