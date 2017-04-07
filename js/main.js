@@ -5,7 +5,7 @@
 * the number of nodes and links.
 * As you change the nodes or links, the other also changes bases on calculations.
 * For instance if there are some nodes deleted, then you wont have the links corresponding to
-* those nodes
+* those nodes and they are removed
 **/
 var Slider = (function(){
   var sliderNodeBtn, sliderLinkBtn, center=window.innerWidth/2, width= window.innerWidth*.7,
@@ -13,8 +13,8 @@ var Slider = (function(){
   var extremeLeft=center-width/2, extremeRight=center+width/2, yPos=height/3;
   
   /**
-  * Updates the node slider based on the val passed
-  * Also has a dontAnimation to animate while changing the position
+  * Updates the node slider based on the value passed.
+  * Also has a dontAnimate option to not animate while changing the position.
   */
   var updateNodeSliderPos = function(val,dontAnimate){
      val = parseInt(val);
@@ -28,7 +28,7 @@ var Slider = (function(){
 
   /**
   * Updates the link slider based on the val passed
-  * Also has a dontAnimation to animate while changing the position
+  * Also has a dontAnimation option to not animate while changing the position
   */
   var updateLinkSliderPos = function(val,dontAnimate){
      val = parseInt(val);
@@ -244,8 +244,8 @@ var ForceLayout = (function(){
       },
 
       /**
-      * Calculate the number of new nodes and also the links corresponding
-      * As of now its just basic removing a fixed number of nodes and then removing 
+      * Calculate the number of new nodes and also the links corresponding.
+      * As of now its just basic; I remove a fixed number of nodes and then remove 
       * the associated links. We can also probably selectively find nodes which have less links
       * and remove them first.
       **/
@@ -268,8 +268,8 @@ var ForceLayout = (function(){
       },
 
       /**
-      * Calculate the number of new link and also the nodes corresponding
-      * As of now its just basic removing a fixed number of links and then removing 
+      * Calculate the number of new links and also the nodes corresponding.
+      * As of now its just basic; I remove a fixed number of links and then remove 
       * disasscociated nodes. We can also probably selectively find nodes with more than one links
       * and remove those links only.
       **/
@@ -299,6 +299,9 @@ var ForceLayout = (function(){
     }
 })();
 
+/**
+* Starting up!
+**/
 ForceLayout.init(function(){
   ForceLayout.update();  
   Slider.init();
