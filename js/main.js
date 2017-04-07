@@ -26,8 +26,7 @@ var Slider = (function(){
   }
 
   /**
-  * Updates the link slider based on the val passed
-  * Also has a dontAnimation option to not animate while changing the position
+  * Updates the link slider based on the value passed
   */
   var updateLinkSliderPos = function(val){
      val = parseInt(val);
