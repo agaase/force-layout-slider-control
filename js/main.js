@@ -245,6 +245,9 @@ var ForceLayout = (function(){
 
       /**
       * Calculate the number of new nodes and also the links corresponding
+      * As of now its just basic removing a fixed number of nodes and then removing 
+      * the associated links. We can also probably selectively find nodes which have less links
+      * and remove them first.
       **/
       updateNodes : function(num){
         var newNodes = graphOriginal.nodes.slice(0,num);
@@ -266,6 +269,9 @@ var ForceLayout = (function(){
 
       /**
       * Calculate the number of new link and also the nodes corresponding
+      * As of now its just basic removing a fixed number of links and then removing 
+      * disasscociated nodes. We can also probably selectively find nodes with more than one links
+      * and remove those links only.
       **/
       updateLinks : function(num){
         var newLinks = graphOriginal.links.slice(0,num);
