@@ -14,30 +14,29 @@ var Slider = (function(){
   
   /**
   * Updates the node slider based on the value passed.
-  * Also has a dontAnimate option to not animate while changing the position.
   */
-  var updateNodeSliderPos = function(val,dontAnimate){
+  var updateNodeSliderPos = function(val){
      val = parseInt(val);
      var x = nodeV(val);
      sliderNodeBtn.attr("val",val);
-     sliderNodeBtn.transition().duration(dontAnimate ? 0 : x/2).attr("cx",x);
-     d3.select(".nodeLabel").transition().duration(dontAnimate ? 0 : x/2).attr("x",x);
+     var dur =  Math.abs(parseInt(sliderNodeBtn.attr("cx"))-x);
+     sliderNodeBtn.transition().duration(dur).attr("cx",x);
+     d3.select(".nodeLabel").transition().duration(dur).attr("x",x);
      d3.select(".nodeLabel .label").html(val);
-     d3.select(".lineActive").transition().duration(dontAnimate ? 0 : x/2).attr("x2",x);
   }
 
   /**
   * Updates the link slider based on the val passed
   * Also has a dontAnimation option to not animate while changing the position
   */
-  var updateLinkSliderPos = function(val,dontAnimate){
+  var updateLinkSliderPos = function(val){
      val = parseInt(val);
      var x = linkV(val);
      sliderLinkBtn.attr("val",val);
-     sliderLinkBtn.transition().duration(dontAnimate ? 0 : x/2).attr("cx",x);
-     d3.select(".linkLabel").transition().duration(dontAnimate ? 0 : x/2).attr("x",x)
+     var dur =  Math.abs(parseInt(sliderLinkBtn.attr("cx"))-x);
+     sliderLinkBtn.transition().duration(dur).attr("cx",x);
+     d3.select(".linkLabel").transition().duration(dur).attr("x",x)
      d3.select(".linkLabel .label").html(val);
-     d3.select(".lineActive").transition().duration(dontAnimate ? 0 : x/2).attr("x1",x);
   }
 
   /**
@@ -49,10 +48,10 @@ var Slider = (function(){
     var x = d3.event.x;
     if(x<(center-sliderMargin) && !sliderNodeBtn.classed("moving")){
       sliderLinkBtn.classed("moving",true);
-      updateLinkSliderPos(linkV.invert(x),true);
+      updateLinkSliderPos(linkV.invert(x));
     }else if(x>(center+sliderMargin) && !sliderLinkBtn.classed("moving")){
       sliderNodeBtn.classed("moving",true);
-      updateNodeSliderPos(nodeV.invert(x),true);
+      updateNodeSliderPos(nodeV.invert(x));
     }
   }
 
@@ -130,7 +129,7 @@ var Slider = (function(){
       .attr("y2", yPos)
       .style("stroke", "#000")
       .style("stroke-linecap", "round")
-      .style("stroke-width", 8)
+      .style("stroke-width", 10)
       .on("click",function(){
         //A click event is just another dragmove and dragend one after another
         dragmove();
